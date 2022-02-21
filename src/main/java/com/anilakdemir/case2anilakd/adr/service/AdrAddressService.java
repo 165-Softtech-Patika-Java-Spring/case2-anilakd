@@ -29,6 +29,11 @@ public class AdrAddressService {
     private final AdrAddressEntityService adrAddressEntityService;
     private final StrStreetEntityService strStreetEntityService;
 
+
+    /**
+     *if the request is valid, this method saves the entity and return Dto object
+     *if the request is not valid, it throws BadRequestException
+     */
     public AdrAddressDto save(AdrAddressSaveRequestDto adrAddressSaveRequestDto){
 
         boolean isValidRequest = validateAdrAddressSaveRequestDto(adrAddressSaveRequestDto);
@@ -47,12 +52,21 @@ public class AdrAddressService {
         adrAddressEntityService.deleteAdrAddressById(addressId);
     }
 
+    /**
+     *this function gets the Persistence Entity
+     * and converts to Dto Object
+     */
     public AdrAddressDto findById(Long id){
         AdrAddress adrAddress = adrAddressEntityService.findById(id);
         AdrAddressDto adrAddressDto = AdrAddressMapper.INSTANCE.convertToAdrAddressDto(adrAddress);
         return adrAddressDto;
     }
 
+    /**
+     * if street is valid
+     * this function checks other parameters(cityId, neighborhoodId, countryId, districtId)
+     * if they are valid, it returns true
+     */
     private boolean validateAdrAddressSaveRequestDto (AdrAddressSaveRequestDto adrAddressSaveRequestDto) {
         Long countryId = adrAddressSaveRequestDto.getCountryId();
         Long cityId = adrAddressSaveRequestDto.getCityId();
@@ -79,10 +93,17 @@ public class AdrAddressService {
 
     }
 
+    /**
+     * if street exists it return true
+     */
     private boolean controlStrStreet (Long streetId) {
         return strStreetEntityService.existById(streetId);
     }
 
+    /**
+     *this function is to check all items in the boolean list are true
+     * if all of them are true, returns true
+     */
     private boolean checkAllListElementsTrue (List<Boolean> booleanList){
         boolean isValidList = true;
         for (Boolean element : booleanList){
