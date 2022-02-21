@@ -1,6 +1,6 @@
 # Case2
 
-!! Ödevde istenen tek controller sınıfı adr paketi altındaki AdrAdressController sınıfıdır.
+!! Ödevde istenen tek controller sınıfına adr -> controller -> AdrAddressController sınıfı üzerinden ulaşılabilir
 
 ## Adres Kayıt Sistemi:  
 Bir adreste bulunması gereken alanlar:  
