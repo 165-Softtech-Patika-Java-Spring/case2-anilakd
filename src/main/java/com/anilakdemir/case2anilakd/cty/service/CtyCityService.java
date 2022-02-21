@@ -21,6 +21,12 @@ public class CtyCityService {
     private final CtyCityEntityService ctyCityEntityService;
     private final CntCountryEntityService cntCountryEntityService;
 
+    /**
+     * if request has valid parameter for countryId
+     * this function gets the country object from cntCountryService
+     * and sets it to city object
+     * saves the city and convert the Dto Object
+     */
     public CtyCityDto save(CtyCitySaveRequestDto ctyCitySaveRequestDto){
         CtyCity ctyCity = CtyCityMapper.INSTANCE.convertToCtyCity(ctyCitySaveRequestDto);
         Long cntCountryId = ctyCitySaveRequestDto.getCountryId();
@@ -35,12 +41,20 @@ public class CtyCityService {
         }
     }
 
+    /**
+     * it gets the city object by plate code(ex: 34, 06, 18) from entityService
+     * and converts to Dto Object
+     */
     public CtyCityDto findCityByPlateCode (String plateCode, String countryCode){
         CtyCity ctyCity = ctyCityEntityService.findCityByPlateCode(plateCode, countryCode);
         CtyCityDto ctyCityDto = CtyCityMapper.INSTANCE.convertToCtyCityDto(ctyCity);
         return ctyCityDto;
     }
 
+    /**
+     * this function is to check if there is a country object whose parameter is countryId
+     * if the country exists return true
+     */
     private boolean controlCntCountryIsExist(Long cntCountryId){
         return cntCountryEntityService.existById(cntCountryId);
     }
