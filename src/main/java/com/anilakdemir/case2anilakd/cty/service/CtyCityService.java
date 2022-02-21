@@ -45,8 +45,8 @@ public class CtyCityService {
      * it gets the city object by plate code(ex: 34, 06, 18) from entityService
      * and converts to Dto Object
      */
-    public CtyCityDto findCityByPlateCode (String plateCode, String countryCode){
-        CtyCity ctyCity = ctyCityEntityService.findCityByPlateCode(plateCode, countryCode);
+    public CtyCityDto findCityByPlateCodeAndCountryCode (String plateCode, String countryCode){
+        CtyCity ctyCity = ctyCityEntityService.findCityByPlateCodeAndCountryCode(plateCode, countryCode);
         CtyCityDto ctyCityDto = CtyCityMapper.INSTANCE.convertToCtyCityDto(ctyCity);
         return ctyCityDto;
     }

@@ -59,8 +59,8 @@ public class AdrAddressController {
     }
 
     @GetMapping("/city/{countryCode}/{plateCode}")
-    public ResponseEntity findCityByPlateCode(@PathVariable String plateCode, @PathVariable String countryCode){
-        CtyCityDto ctyCityDto = ctyCityService.findCityByPlateCode(plateCode, countryCode);
+    public ResponseEntity findCityByPlateCodeAndCountryCode (@PathVariable String plateCode, @PathVariable String countryCode){
+        CtyCityDto ctyCityDto = ctyCityService.findCityByPlateCodeAndCountryCode(plateCode, countryCode);
         return ResponseEntity.ok(ctyCityDto);
     }
 

@@ -19,7 +19,7 @@ public class CtyCityEntityService {
         return ctyCityDao.save(ctyCity);
     }
 
-    public CtyCity findCityByPlateCode (String plateCode, String countryCode) {
+    public CtyCity findCityByPlateCodeAndCountryCode (String plateCode, String countryCode) {
         return ctyCityDao.findByPlateCodeAndCountry_Code(plateCode,countryCode).orElseThrow(()->new ItemNotFoundException("City can not found"));
     }
 
