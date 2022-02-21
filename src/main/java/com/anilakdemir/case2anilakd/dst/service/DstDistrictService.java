@@ -24,6 +24,12 @@ public class DstDistrictService {
     private final DstDistrictEntityService dstDistrictEntityService;
     private final CtyCityEntityService ctyCityEntityService;
 
+    /**
+     * if request has valid parameter for cityId
+     * this function gets the city object from ctyCityService
+     * and sets it to district object
+     * saves the district and convert the Dto Object
+     */
     public DstDistrictDto save(DstDistrictSaveRequestDto dstDistrictSaveRequestDto){
         DstDistrict dstDistrict = DstDistrictMapper.INSTANCE.convertToDstDistrict(dstDistrictSaveRequestDto);
         Long cityId = dstDistrictSaveRequestDto.getCityId();
@@ -38,6 +44,11 @@ public class DstDistrictService {
         }
     }
 
+    /**
+     * it gets all district object from DAO as a List
+     * if size of list greater than zero it converts List<Object> to List<ObjectDto>
+     * if not it returns empty list
+     */
     public List<DstDistrictDto> findAllByCityId(Long cityId){
         List<DstDistrict> districtList = dstDistrictEntityService.findAllByCityId(cityId);
         if(districtList.size()>0){
@@ -48,6 +59,10 @@ public class DstDistrictService {
         }
     }
 
+    /**
+     * this function is to check if there is a city object whose parameter is id
+     * if the city exists return true
+     */
     private boolean controlCtyCityIsExist(Long id){
         return ctyCityEntityService.existById(id);
     }
