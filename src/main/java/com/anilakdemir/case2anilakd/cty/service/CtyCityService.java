@@ -23,7 +23,7 @@ public class CtyCityService {
 
     /**
      * if request has valid parameter for countryId
-     * this function gets the country object from cntCountryService
+     * this function gets the country object from cntCountryEntityService
      * and sets it to city object
      * saves the city and convert the Dto Object
      */
@@ -53,7 +53,7 @@ public class CtyCityService {
 
     /**
      * this function is to check if there is a country object whose parameter is countryId
-     * if the country exists return true
+     * if the country exists, it returns true
      */
     private boolean controlCntCountryIsExist(Long cntCountryId){
         return cntCountryEntityService.existById(cntCountryId);

@@ -26,7 +26,7 @@ public class DstDistrictService {
 
     /**
      * if request has valid parameter for cityId
-     * this function gets the city object from ctyCityService
+     * this function gets the city object from ctyCityEntityService
      * and sets it to district object
      * saves the district and convert the Dto Object
      */
@@ -61,7 +61,7 @@ public class DstDistrictService {
 
     /**
      * this function is to check if there is a city object whose parameter is id
-     * if the city exists return true
+     * if the city exists, it returns true
      */
     private boolean controlCtyCityIsExist(Long id){
         return ctyCityEntityService.existById(id);
