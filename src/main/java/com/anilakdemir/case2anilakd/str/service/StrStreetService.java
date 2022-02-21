@@ -34,7 +34,7 @@ public class StrStreetService {
     public StrStreetDto save(StrStreetSaveRequestDto strStreetSaveRequestDto){
         StrStreet strStreet = StrStreetMapper.INSTANCE.convertToStrStreet(strStreetSaveRequestDto);
         Long neighborhoodId = strStreetSaveRequestDto.getNeighborhoodId();
-        if(controlNeighborhoodtIsExist(neighborhoodId)){
+        if(controlNeighborhoodIsExist(neighborhoodId)){
             NhbNeighborhood nhbNeighborhood = nhbNeighborhoodEntityService.findById(neighborhoodId);
             strStreet.setNeighborhood(nhbNeighborhood);
             strStreet = strStreetEntityService.save(strStreet);
@@ -74,7 +74,7 @@ public class StrStreetService {
      * this function is to check if there is a neighborhood object whose parameter is neighborhoodId
      * if the neighborhood exists, it returns true
      */
-    private boolean controlNeighborhoodtIsExist(Long neighborhoodId){
+    private boolean controlNeighborhoodIsExist (Long neighborhoodId){
         return nhbNeighborhoodEntityService.existById(neighborhoodId);
     }
 }
