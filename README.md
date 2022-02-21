@@ -1,5 +1,7 @@
 # Case2
 
+!! Ödevde istenen tek controller sınıfı adr paketi altındaki AdrAdressController sınıfıdır.
+
 ## Adres Kayıt Sistemi:  
 Bir adreste bulunması gereken alanlar:  
 - Ülke 
